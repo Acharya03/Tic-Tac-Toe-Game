@@ -65,4 +65,33 @@ body{
 
 .modal{
   position: absolute;
+  width: 650px;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 5px 10px 10px;
+  display: none;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column ;
+  height: 100%;
+}
+
+button{
+  outline: none;
+  border: none;
+  padding: 0.8rem 4rem;
+  margin-top: 2rem;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1.2rem;
+  width: 320px;
+  cursor: pointer;
+  background-color: var(--orangeColor);
+  color: var(--darkColor);
+  font-weight: 600;
 }
