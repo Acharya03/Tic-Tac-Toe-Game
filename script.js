@@ -10,6 +10,9 @@ const X_TXT = "X";
 
 let currentPlayer = X_TXT;
 let spaces = Array(9).fill(null);
+
+
+let winnerIndicator = getComputedStyle(document.body).getPropertyValue("--darkColor",);
 //start game
 const startGame = () => {
     boxes.forEach((boxs) => boxs.addEventListener("click", boxClicked));
@@ -21,7 +24,17 @@ function boxClicked(e) {
     if (!spaces[id]) {
         spaces[id] = currentPlayer;
         e.target.innerText = currentPlayer;
-        playerHasWon();
+        if(playerHasWon()!=false){
+            playertxt.innerHTML = `<h2 class="message">
+            Congratulations player ${currentPlayer}
+          </h2>`;
+          winnerIndicator = playerHasWon();
+
+          winnerIndicator.map((box) => (boxes[box].style.backgroundColor = "#f4d03f"),
+        );
+
+          containerEl.classList.add("success");
+        }
         currentPlayer = currentPlayer == X_TXT ? O_TXT : X_TXT;
     }
 }
@@ -48,5 +61,19 @@ function playerHasWon(){
         }
     }
     return false;
+}
+
+restartBtn.addEventListener('click', restartGame);
+
+function restartGame(){
+    spaces.fill(null);
+    boxes.forEach((box)=>{
+        box.innerHTML = "";
+        box.style.backgroundColor = "";
+    })
+
+    playertxt.innerHTML = "Tic Tac Toe"
+    currentPlayer = O_TXT;
+    containerEl.classList.remove("success");
 }
 startGame();
