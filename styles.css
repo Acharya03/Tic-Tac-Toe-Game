@@ -74,7 +74,7 @@ body{
  
   opacity: 0;
   transform: translateX(500%);
-  transition: all 0.8s ease-in;
+  transition: all 01.s ease-in;
 }
 
 .container.success .modal{
