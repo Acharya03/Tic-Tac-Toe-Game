@@ -35,7 +35,17 @@ function boxClicked(e) {
 
           containerEl.classList.add("success");
         }
+        if(playerHasWon()){
+            return;
+        }
         currentPlayer = currentPlayer == X_TXT ? O_TXT : X_TXT;
+    }
+    
+    if(!spaces.includes(null) && !playerHasWon()){
+        setTimeout(() => {
+            alert("It's a tie!")
+            restartGame();
+        }, 100);
     }
 }
 
